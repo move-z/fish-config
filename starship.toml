@@ -1,0 +1,43 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# add_newline = true
+command_timeout = 1000
+
+[aws]
+disabled = true
+
+[directory]
+format = '[](6)[$path]($style)[](6)[$read_only]($read_only_style) '
+style = "fg:white bg:6"
+repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[](fg:6)[$read_only]($read_only_style) '
+repo_root_style = 'fg:white bold bg:6'
+truncation_symbol = "…/"
+fish_style_pwd_dir_length = 1
+
+# [git_branch]
+# truncation_length = 15
+
+[git_metrics]
+disabled = false
+
+[kubernetes]
+disabled = false
+detect_files = ['k8s']
+
+# [line_break]
+# disabled = true
+
+[memory_usage]
+threshold = 90
+disabled = false
+
+[status]
+disabled = false
+map_symbol = true
+symbol = '❌'
+
+[time]
+disabled = false
+style = 'blue'
+time_format = "%R"
+format = '[  $time ]($style)'

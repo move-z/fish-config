@@ -1,0 +1,1 @@
+/home/rodolfo/.config/fish/functions/sdk.fish
