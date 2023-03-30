@@ -1,1 +1,1 @@
-/home/boer.rodolfo/.config/fish/functions/sdk.fish
+sdk.fish
