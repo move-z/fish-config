@@ -56,3 +56,5 @@ if status is-interactive
     bind \e\[C forward-single-char
 end
 
+source local.fish
+
