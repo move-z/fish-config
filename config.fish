@@ -56,5 +56,8 @@ if status is-interactive
     bind \e\[C forward-single-char
 end
 
-source local.fish
+set FISH_CONF_DIR "$HOME/.config/fish"
+if test -f "$FISH_CONF_DIR/local.fish"
+    source "$FISH_CONF_DIR/local.fish"
+end
 
