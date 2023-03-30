@@ -45,6 +45,7 @@ if status is-interactive
     alias du dust
     # alias find fd
     # alias grep rg
+    alias less bat
     alias ls "exa --header --icons"
     # alias ps procs
     # alias sed sd
