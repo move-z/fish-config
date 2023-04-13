@@ -32,6 +32,9 @@ if status is-interactive
     mcfly init fish | source
     mcfly-fzf init fish | source
 
+    kubectl completion fish | source
+    k3d completion fish | source
+
     # Commands to run in interactive sessions can go here
     alias nv nvim
     alias vim nvim
@@ -41,15 +44,9 @@ if status is-interactive
     alias cdi zi
 
     alias cat "bat -pP"
-    # alias diff difft
     alias du dust
-    # alias find fd
-    # alias grep rg
     alias less bat
     alias ls "exa --header --icons"
-    # alias ps procs
-    # alias sed sd
-    alias top btm
 
     bind -k nul forward-char
     bind -k right forward-single-char
