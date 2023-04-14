@@ -33,8 +33,8 @@ if status is-interactive
     mcfly init fish | source
     mcfly-fzf init fish | source
 
-    kubectl completion fish | source
-    k3d completion fish | source
+    # kubectl completion fish | source
+    # k3d completion fish | source
 
     # Commands to run in interactive sessions can go here
     alias nv nvim
