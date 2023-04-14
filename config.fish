@@ -8,9 +8,9 @@ fish_add_path -P ~/.local/bin
 fish_add_path -P ~/.local/share/nvim/mason/bin
 
 bass source "$HOME/.cargo/env"
-#bass source "$HOME/.sdkman/bin/sdkman-init.sh"
 set -x JAVA_HOME $HOME/.sdkman/candidates/java/current
 
+#bass source "$HOME/.sdkman/bin/sdkman-init.sh"
 for candidate in $HOME/.sdkman/candidates/* ;
   fish_add_path -P $candidate/current/bin
 end
