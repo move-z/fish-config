@@ -5,6 +5,7 @@ set -x BROWSER firefox
 set -x STARSHIP_CONFIG ~/.config/fish/starship.toml
 
 fish_add_path -P ~/.local/bin
+fish_add_path -P ~/.local/share/nvim/mason/bin
 
 bass source "$HOME/.cargo/env"
 #bass source "$HOME/.sdkman/bin/sdkman-init.sh"
