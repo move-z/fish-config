@@ -29,7 +29,7 @@ if status is-interactive
     enable_transience
 
     # must run before initializing mcfly
-    fzf_configure_bindings --directory=\cf --history=\e\cr
+    fzf_configure_bindings --directory=\cf --git_log=\a --git_status=\cs --history= --processes=\cp
     mcfly init fish | source
     mcfly-fzf init fish | source
 
