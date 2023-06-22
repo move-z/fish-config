@@ -1,3 +1,4 @@
+# backward compatibility with posix profile file
 bass source /etc/profile
 
 set -x EDITOR nvim
@@ -7,15 +8,27 @@ set -x STARSHIP_CONFIG ~/.config/fish/starship.toml
 fish_add_path -P ~/.local/bin
 fish_add_path -P ~/.local/share/nvim/mason/bin
 
-bass source "$HOME/.cargo/env"
-set -x JAVA_HOME $HOME/.sdkman/candidates/java/current
+direnv hook fish | source
 
+# rust cargo
+bass source "$HOME/.cargo/env"
+
+# java sdkman
 #bass source "$HOME/.sdkman/bin/sdkman-init.sh"
 for candidate in $HOME/.sdkman/candidates/* ;
   fish_add_path -P $candidate/current/bin
 end
+set -x JAVA_HOME $HOME/.sdkman/candidates/java/current
+
+# npm nvm
+#bass source "$HOME/.nvm/nvm.sh"
+function nvm
+    bass source $HOME/.nvm/nvm.sh ';' nvm $argv
+end
 
 if status is-interactive
+    # Commands to run in interactive sessions can go here
+
     # transient prompt for starship: prompt definition
     function starship_transient_prompt_func
         starship module directory
@@ -33,21 +46,20 @@ if status is-interactive
     mcfly init fish | source
     mcfly-fzf init fish | source
 
+    # makes startup too slow
     # kubectl completion fish | source
     # k3d completion fish | source
-
-    # Commands to run in interactive sessions can go here
-    alias nv nvim
-    alias vim nvim
 
     zoxide init fish | source
     alias cd z
     alias cdi zi
 
     alias cat "bat -pP"
-    alias du dust
     alias less bat
     alias ls "exa --header --icons"
+
+    alias nv nvim
+    alias vim nvim
 
     bind -k nul forward-char
     bind -k right forward-single-char
