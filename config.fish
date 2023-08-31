@@ -3,6 +3,7 @@ bass source /etc/profile
 
 set -x EDITOR nvim
 set -x BROWSER firefox
+set -x GPG_TTY (tty)
 set -x STARSHIP_CONFIG ~/.config/fish/starship.toml
 
 fish_add_path -P ~/.local/bin
