@@ -7,5 +7,4 @@ functions/_fzf*
 functions/bass.fish
 functions/fisher.fish
 functions/fzf_configure_bindings.fish
-functions/sss.fish
 

@@ -57,7 +57,7 @@ if status is-interactive
 
     alias cat "bat -pP"
     alias less bat
-    alias ls "eza --header --icons"
+    alias ls "eza --header --icons --git"
 
     alias nv nvim
     alias vim nvim
