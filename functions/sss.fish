@@ -1,16 +1,25 @@
 function sss -d "SSH connection through cyberark"
     if test (count $argv) -lt 1
-        echo "Hostname required" >/dev/stderr
+        echo "Use: sss [--sys] [args] <dest>" >/dev/stderr
         return 1
     end
 
-    set CYBERARK_HOST plcarkpsmp01.intranet.previmedical.it
-    set -q USERNAME || set USERNAME $USER
-    set DEST_HOST $argv[(count $argv)]
-    set DEST_HOST (string replace .intranet.previmedical.it '' $DEST_HOST).intranet.previmedical.it
-    set ARGS $argv[1..-2]
+    set _CYBERARK_HOST plcarkpsmp01.intranet.previmedical.it
+    set -q _USERNAME || set _USERNAME $USER
 
-    set CMD "ssh $ARGS $USERNAME@root@$DEST_HOST@$CYBERARK_HOST"
-    echo Running $CMD
-    eval $CMD
+    argparse sys -- $argv
+    or return 1
+    if set -ql _flag_sys
+        set _DEST_USER sistemisti
+    else
+        set _DEST_USER root
+    end
+
+    set _DEST $argv[-1]
+    set _DEST (string replace .intranet.previmedical.it '' $_DEST).intranet.previmedical.it
+    set _ARGS $argv[1..-2]
+
+    set _CMD "ssh $_ARGS $_USERNAME@$_DEST_USER@$_DEST@$_CYBERARK_HOST"
+    echo Running $_CMD
+    eval $_CMD
 end
