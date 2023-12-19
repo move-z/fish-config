@@ -4,12 +4,13 @@ function sss -d "SSH connection through cyberark"
         return 1
     end
 
-    set CYBERARK plcarkpsmp01.intranet.previmedical.it
-    set HOSTNAME $argv[(count $argv)]
-    set HOSTNAME (string replace .intranet.previmedical.it '' $HOSTNAME).intranet.previmedical.it
-    set argv $argv[1..-2]
+    set CYBERARK_HOST plcarkpsmp01.intranet.previmedical.it
+    set -q USERNAME || set USERNAME $USER
+    set DEST_HOST $argv[(count $argv)]
+    set DEST_HOST (string replace .intranet.previmedical.it '' $DEST_HOST).intranet.previmedical.it
+    set ARGS $argv[1..-2]
 
-    set CMD "ssh $argv $USER@root@$HOSTNAME@$CYBERARK"
+    set CMD "ssh $ARGS $USERNAME@root@$DEST_HOST@$CYBERARK_HOST"
     echo Running $CMD
     eval $CMD
 end
