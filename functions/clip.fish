@@ -1,6 +1,6 @@
 function clip -d "Copy to clipboard"
     function _clip_wayland
-        wl-copy
+        wl-copy -t text/plain
     end
 
     function _clip_x

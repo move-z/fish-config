@@ -4,7 +4,7 @@ function sss -d "SSH connection through cyberark"
         return 1
     end
 
-    set _CYBERARK_HOST plcarkpsmp01.intranet.previmedical.it
+    set _CYBERARK_HOST cyberark.intranet.previmedical.it
     set -q _USERNAME || set _USERNAME $USER
 
     argparse sys -- $argv
