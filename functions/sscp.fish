@@ -4,10 +4,10 @@ function sscp -d "SCP through cyberark"
         return 1
     end
 
-    set _CYBERARK_HOST plcarkpsmp01.intranet.previmedical.it
+    set _CYBERARK_HOST cyberark.intranet.previmedical.it
     set -q _USERNAME || set _USERNAME "$USER"
 
-    argparse sys -- $argv
+    argparse -i sys -- $argv
     or return 1
     if set -ql _flag_sys
         set _DEST_USER sistemisti
@@ -15,7 +15,7 @@ function sscp -d "SCP through cyberark"
         set _DEST_USER root
     end
 
-    function _sscp_build_arg -V _CYBERARK_HOST -V _USERNAME
+    function _sscp_build_arg -V _CYBERARK_HOST -V _USERNAME -V _DEST_USER
         set _PATH $argv[1]
 
         if test (count $_PATH) -gt 1

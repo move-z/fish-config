@@ -5,9 +5,9 @@ function sss -d "SSH connection through cyberark"
     end
 
     set _CYBERARK_HOST cyberark.intranet.previmedical.it
-    set -q _USERNAME || set _USERNAME $USER
+    set -q CYBERARK_USERNAME && set _USERNAME "$CYBERARK_USERNAME" || set _USERNAME "$USER"
 
-    argparse sys -- $argv
+    argparse -i sys -- $argv
     or return 1
     if set -ql _flag_sys
         set _DEST_USER sistemisti
