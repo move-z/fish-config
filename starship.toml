@@ -22,7 +22,11 @@ disabled = false
 
 [kubernetes]
 disabled = false
-detect_files = ['k8s']
+detect_files = ['.k8s']
+[[kubernetes.contexts]]
+context_pattern = "^pl.*$"
+style = "red"
+symbol = "☸💡"
 
 # [line_break]
 # disabled = true
@@ -33,8 +37,10 @@ disabled = false
 
 [status]
 disabled = false
+format = '[$symbol $status $common_meaning$signal_name]($style) '
+pipestatus_format = '\[$pipestatus\] => [$symbol $status $common_meaning$signal_name]($style)'
 map_symbol = true
-symbol = '❌'
+pipestatus = true
 
 [time]
 disabled = false
