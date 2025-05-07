@@ -1,4 +1,4 @@
-local.fish
+completions/
 conf.d/fzf.fish
 conf.d/sdk.fish
 functions/__bass*
@@ -6,5 +6,5 @@ functions/__sdk*
 functions/_fzf*
 functions/bass.fish
 functions/fisher.fish
-functions/fzf_configure_bindings.fish
+local.fish
 

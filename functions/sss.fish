@@ -16,7 +16,9 @@ function sss -d "SSH connection through cyberark"
     end
 
     set _DEST $argv[-1]
-    set _DEST (string replace .intranet.previmedical.it '' $_DEST).intranet.previmedical.it
+    if not string match '*.previmedical.it' $_DEST
+        set _DEST $_DEST.intranet.previmedical.it
+    end
     set _ARGS $argv[1..-2]
 
     set _CMD "ssh $_ARGS $_USERNAME@$_DEST_USER@$_DEST@$_CYBERARK_HOST"
