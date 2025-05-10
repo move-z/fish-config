@@ -7,5 +7,6 @@ functions/__sdk*
 functions/_fzf*
 functions/bass.fish
 functions/fisher.fish
+functions/sdk.fish
 local.fish
 
