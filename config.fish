@@ -77,7 +77,7 @@ if status is-interactive
     enable_transience
 
     zellij setup --generate-completion fish | source
-    if ! set -q ZELLIJ
-        exec zellij attach --create default
+    if not set -q ZELLIJ
+        exec zellij attach -c
     end
 end
