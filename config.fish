@@ -1,7 +1,8 @@
 # backward compatibility with posix profile file
 bass source /etc/profile
 
-set -x EDITOR nvim
+set -x EDITOR hx
+# set -x EDITOR nvim
 set -x BROWSER firefox
 set -x GPG_TTY (tty)
 set -x STARSHIP_CONFIG ~/.config/fish/starship.toml
@@ -25,6 +26,11 @@ bass source "$HOME/.cargo/env"
 #  fish_add_path -P $candidate/current/bin
 #end
 #set -x JAVA_HOME $HOME/.sdkman/candidates/java/current
+
+set FISH_CONF_DIR "$HOME/.config/fish"
+if test -f "$FISH_CONF_DIR/local.fish"
+    source "$FISH_CONF_DIR/local.fish"
+end
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
@@ -57,22 +63,21 @@ if status is-interactive
     bind -k nul forward-char
     bind -k right forward-single-char
     bind \e\[C forward-single-char
+
+    # transient prompt for starship: prompt definition
+    function starship_transient_prompt_func
+        starship module directory
+        printf " @ "
+        starship module time
+        starship module character
+    end
+
+    starship init fish | source
+    # enable transient prompt for starship (this function is defined by starship)
+    enable_transience
+
+    zellij setup --generate-completion fish | source
+    if ! set -q ZELLIJ
+        exec zellij attach --create default
+    end
 end
-
-# transient prompt for starship: prompt definition
-function starship_transient_prompt_func
-    starship module directory
-    printf " @ "
-    starship module time
-    starship module character
-end
-
-starship init fish | source
-# enable transient prompt for starship (this function is defined by starship)
-enable_transience
-
-set FISH_CONF_DIR "$HOME/.config/fish"
-if test -f "$FISH_CONF_DIR/local.fish"
-    source "$FISH_CONF_DIR/local.fish"
-end
-
